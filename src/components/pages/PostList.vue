@@ -68,6 +68,7 @@ onValue(refPost, (snapshot) => {
 </template>
 
 <style scoped>
+
 .blur {
   background: url(src/img/haikei.jpg) no-repeat center;
   background-size: cover;

@@ -6,11 +6,11 @@ import Footer from "./footer/Footer.vue"
   <div class="blur">
     <main>
       <div class="form-area">
-        <form class="form-search" action="サイトＵＲＬ" method="get">
+        <form class="form-search"  method="get">
           <input class="search-input" type="search" name="search" placeholder="キーワードを入力">
         </form>
       </div>
-      <i class="fa-solid fa-magnifying-glass"></i>
+      <i class="fa-solid fa-magnifying-glass" @click="movePage"></i>
     </main>
   </div>
   <Footer />
@@ -21,7 +21,7 @@ import Footer from "./footer/Footer.vue"
  background: url(src/img/haikei.jpg) no-repeat center;
   background-size: cover;
   position: relative;
-  z-index: -1;
+  z-index: 0;
   overflow: hidden;
 }
 
@@ -38,7 +38,7 @@ import Footer from "./footer/Footer.vue"
   left: -5px;
   right: -5px;
   bottom: -5px;
-  z-index: -2;
+  z-index: -1;
 }
 
 header {
