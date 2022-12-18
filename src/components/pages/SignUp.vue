@@ -12,12 +12,13 @@ const data = reactive({
 });
 
 const router = useRouter()
+
 const auth = getAuth();
 
 const signUp = () => {
   createUserWithEmailAndPassword(auth, data.email, data.password)
     .then((userCredential) => {
-      router.push('/postlist')
+      router.push('/postList')
     })
     .catch((error) => {
       console.log(error)

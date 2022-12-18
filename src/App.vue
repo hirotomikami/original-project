@@ -1,8 +1,4 @@
 <script setup>
-// import HelloWorld from './components/HelloWorld.vue'
-// import Login from './components/pages/Login.vue';
-// import Top from './components/pages/Top.vue';
-// import footer from './components/pages/Footer.vue';
 </script>
 
 <template>

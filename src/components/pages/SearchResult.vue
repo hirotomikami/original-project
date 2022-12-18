@@ -5,8 +5,9 @@ import { getDatabase, ref as dbRef, onValue } from "firebase/database";
 
 // import { getAuth, onAuthStateChanged } from "firebase/auth";
 
-const posts = ref([]);
 
+// 投稿データを取得,表示
+const posts = ref([]);
 const db = getDatabase();
 const refPost = dbRef(db,"post");
 
@@ -21,6 +22,11 @@ onValue(refPost, (snapshot) => {
     });
   }
 });
+
+// 検索ワードを取得
+// const searchWord = ref('');
+const refSearchWord = dbRef(db,"word");
+console.log(refSearchWord.value);
 
 
 </script>

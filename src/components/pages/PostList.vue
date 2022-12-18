@@ -5,8 +5,9 @@ import { getDatabase, ref as dbRef, onValue } from "firebase/database";
 
 // import { getAuth, onAuthStateChanged } from "firebase/auth";
 
-const posts = ref([]);
 
+// 投稿データを取得,表示
+const posts = ref([]);
 const db = getDatabase();
 const refPost = dbRef(db,"post");
 
