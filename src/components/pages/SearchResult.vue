@@ -11,6 +11,12 @@ const posts = ref([]);
 const db = getDatabase();
 const refPost = dbRef(db,"post");
 
+// 検索ワードを取得
+// const searchWord = ref('');
+const words = ref([]);
+const refSearchWord = dbRef(db,"word");
+
+
 onValue(refPost, (snapshot) => {
   const snap = snapshot.val();
   for (const key in snap) {
@@ -21,13 +27,24 @@ onValue(refPost, (snapshot) => {
       displayName: snap[key].displayName,
     });
   }
-});
+  onValue(refSearchWord, (snapshot) => {
+    const snap2 = snapshot.val();
+    for (const key in snap2) {
+      words.value.push({
+        word: snap2[key].word,
+      });
+    }
+    const array = snap.filter((value) => {
+      return value.introduce == snap2.value.word
+    });
+    console.log(array)
 
-// 検索ワードを取得
-// const searchWord = ref('');
-const refSearchWord = dbRef(db,"word");
-console.log(refSearchWord.value);
-
+    console.log(posts.value);
+    console.log(snap["-NJJI2VKRQptWEN6E0CV"]);
+    console.log(words.value);
+    console.log(snap2["-NJn-NItAyDf_EUpBI_f"]);
+    });
+  });
 
 </script>
 
