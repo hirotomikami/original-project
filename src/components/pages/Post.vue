@@ -5,6 +5,7 @@ import { getDatabase, ref as dbRef, push } from "firebase/database";
 
 const image = ref(null)
 
+// imageをurlに変換
 const url = computed(() => {
   if (!image.value) {
     return "";

@@ -21,10 +21,12 @@ onValue(refPost, (snapshot) => {
     }
 });
 
-
+// 検索処理
 const searchWord = ref("");
 const filterWord = ref("");
 
+// computed:自動で上書き処理
+// title,introduceにfilterWordが含まれる投稿filter
 const filteredPosts = computed(() => {
   return posts.value.filter(post => {
     return post.title.includes(filterWord.value)
@@ -32,6 +34,7 @@ const filteredPosts = computed(() => {
   })
 })
 
+// インプットした検索ワードを別の変数に格納
 const search = () => {
   filterWord.value = searchWord.value
   console.log(filteredPosts.value)

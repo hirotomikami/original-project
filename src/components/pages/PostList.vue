@@ -11,7 +11,6 @@ const posts = ref([]);
 const db = getDatabase();
 const refPost = dbRef(db,"post");
 
-// await fetch(url).then(r => r);
 
 onValue(refPost, (snapshot) => {
   const snap = snapshot.val();
@@ -172,7 +171,6 @@ main {
 
 .int {
   width: 100%;
-  /* height: 30px; */
   margin: 0 auto;
   font-size: 15px;
   text-align: center;
