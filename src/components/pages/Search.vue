@@ -1,46 +1,95 @@
 <script setup>
 import Footer from "./footer/Footer.vue";
-import { ref } from "vue";
-import { getDatabase, ref as dbRef, push } from "firebase/database"
+import { ref, computed } from "vue";
+import { getDatabase, ref as dbRef, onValue } from "firebase/database"
 
 
-// 検索ワードデータ
-const inputSearchWord = ref('');
+// 投稿データを取得,表示
+const posts = ref([]);
+const db = getDatabase();
+const refPost = dbRef(db,"post");
 
-const doSearch = () => {
-  let searchWord = {
-    word: inputSearchWord.value,
-  }
+onValue(refPost, (snapshot) => {
+  const snap = snapshot.val();
+  for (const key in snap) {
+    posts.value.push({
+      title: snap[key].title,
+      introduce: snap[key].introduce,
+      uid: snap[key].uid,
+      displayName: snap[key].displayName,
+    });
+    }
+});
 
-  // let searchWord = inputSearchWord.value
 
+const searchWord = ref("");
+const filterWord = ref("");
 
-  // firebaseに保存
-  const db = getDatabase();
-  push(dbRef(db, 'word'), searchWord);
+const filteredPosts = computed(() => {
+  return posts.value.filter(post => {
+    return post.title.includes(filterWord.value)
+      || post.introduce.includes(filterWord.value)
+  })
+})
 
-  console.log(searchWord);
+const search = () => {
+  filterWord.value = searchWord.value
+  console.log(filteredPosts.value)
+}
 
-  // router.push('/searchResult')
-};
 
 </script>
 
 <template>
   <div class="blur">
-    <main>
-      <div class="form-area">
-        <form class="form-search"  method="get">
-          <input
-            class="search-input"
-            type="search" name="search"
-            placeholder="キーワードを入力"
-            v-model="inputSearchWord">
-        </form>
-      </div>
-      <i class="fa-solid fa-magnifying-glass" @click="doSearch()"></i>
-    </main>
+    <div class="top-element">
+      <header>
+        <div class="text">
+          <h1>FAV S/S</h1>
+        </div>
+        <div class="form-area">
+          <form class="form-search"  method="get">
+            <input
+              class="search-input"
+              type="search" name="search"
+              placeholder="キーワードを入力"
+              v-model="searchWord">
+          </form>
+        </div>
+        <a href="javascript:void(0);" @click="search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </a>
+      </header>
+    </div>
   </div>
+  <main class="main-2">
+    <section v-for="post in filteredPosts" :key="post">
+      <div class="post-area">
+        <div class="name-area">
+        <div class="name">
+          NickName
+        </div>
+        </div>
+        <div class="photo-area">
+          <img class="photo" src="src/img/ti.JPG">
+        </div>
+        <div
+          class="title-area"
+        >
+          <p class="title">
+            {{ post.title }}
+          </p>
+        </div>
+        <div
+          class="int-area"
+        >
+          <p class="int">
+            {{ post.introduce }}
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
   <Footer />
 </template>
 
@@ -71,10 +120,17 @@ const doSearch = () => {
 
 header {
   width: 100%;
-  height: 300px;
 }
 
-main {
+header .text h1 {
+  text-align: center;
+  line-height: 100px;
+  font-size: 50px;
+  color: snow;
+  z-index: 3;
+}
+
+.main-1 {
   width: 100%;
   height: 800px;
 }
@@ -102,9 +158,80 @@ main {
 
 .fa-magnifying-glass {
   position: absolute;
-  top: 50px;
+  top: 150px;
   right: 2%;
   color: snow;
   font-size: 30px;
 }
+
+.main-2 {
+  width: 100%;
+  margin: 0px;
+  background-color: snow;
+  overflow: hidden;
+}
+
+
+.post-area {
+  width: 300px;
+  margin: 50px auto;
+  padding: 20px 0px;
+  border: solid 1px grey;
+  box-shadow: 2px 2px 2px 3px grey;
+  border-radius: 20px;
+}
+
+.name-area {
+  width: fit-content;
+  background-color: grey;
+  margin-left: 10px;
+  border-radius: 10px;
+}
+
+.name {
+  text-align: center;
+  color: snow;
+  font-size: 10px;
+  padding: 5px;
+}
+
+.photo-area {
+  width: 60%;
+  margin: 0px auto;
+}
+
+.photo {
+  width: 100%;
+  margin: 20px auto;
+  border-radius: 30px;
+}
+
+.title-area {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.title {
+  width: 100%;
+  height: 30px;
+  margin: 20px auto 0px;
+  text-align: center;
+  font-size: 20px;
+  line-height: 30px;
+}
+
+.int-area {
+  width: 60%;
+  margin: 0 auto;
+  padding: 10px 0px;
+}
+
+.int {
+  width: 100%;
+  margin: 0 auto;
+  font-size: 15px;
+  text-align: center;
+  color: grey;
+}
+
 </style>

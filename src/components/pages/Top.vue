@@ -117,7 +117,7 @@ text {
   background: url(src/img/haikei2.jpg) no-repeat center;
   background-size: cover;
   position: relative;
-  z-index: 2;
+  z-index: 0;
   overflow: hidden;
 }
 
@@ -157,4 +157,6 @@ main {
   display: block;
   margin-top: 0.5em;
 }
+
+
 </style>

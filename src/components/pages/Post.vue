@@ -1,15 +1,19 @@
 <script setup>
 import Footer from './footer/Footer.vue'
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { getDatabase, ref as dbRef, push } from "firebase/database";
+
+const image = ref(null)
+
+const url = computed(() => {
+  if (!image.value) {
+    return "";
+  }
+  return URL.createObjectURL(image.value?.[0]);
+})
 
 const inputTitle = ref('');
 const inputIntroduce = ref('');
-
-// const doPost = () => {
-//   if(input.value === '') return;
-//   input.value = '';
-// }
 
 const pushPost = () => {
   let postData = {
@@ -17,13 +21,8 @@ const pushPost = () => {
     uid: "test",
     title: inputTitle.value,
     introduce: inputIntroduce.value,
+    image: url.value,
   }
-
-  // if (input.value === '') {
-  //   return;
-  // } else {
-  //   next('/postList');
-  // }
 
 // firebaseに保存
 const db = getDatabase();
@@ -31,24 +30,17 @@ push(dbRef(db, 'post'), postData);
 
 };
 
-// beforeRouteEnter: (to, from, next) => {
-//   const auth = getAuth();
-//   onAuthStateChanged(auth, (user) => {
-//     if (user) {
-//       next();
-//     } else {
-//       next('/login');
-//     }
-//   });
-// }
 </script>
 
 <template>
   <body>
     <div class="blur">
       <main>
-        <div class="form-area-photo">
-          <p class="photo">画像フォーム領域</p>
+        <div class="photo-area">
+            <v-img :src="url" class="photo" />
+        </div>
+        <div class="input-photo">
+          <v-file-input class="file-input" v-model="image"  />
         </div>
         <div class="form-area-title">
           <form class="form-title">
@@ -117,22 +109,30 @@ main {
   width: 100%;
 }
 
-input {
-  color: snow;
-  font-size: 20px;
-}
 
-.form-area-photo {
-  width: 350px;
-  background-color: grey;
-  margin: 50px auto;
+.photo-area {
+  width: 60%;
+  margin: 20px auto;
 }
-
 .photo {
-  font-size: 20px;
-  color: white;
-  text-align: center;
-  line-height: 300px;
+  width: 100%;
+  margin: 20px auto;
+  border-radius: 30px;
+}
+
+.input-photo {
+  width: 100%;
+  margin: 5px auto;
+}
+
+.file-input {
+  color: snow;
+  width: 80%;
+  margin: 10px ;
+}
+
+.file-input::placeholder {
+  color: red;
 }
 
 .form-title {

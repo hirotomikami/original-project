@@ -11,6 +11,8 @@ const posts = ref([]);
 const db = getDatabase();
 const refPost = dbRef(db,"post");
 
+// await fetch(url).then(r => r);
+
 onValue(refPost, (snapshot) => {
   const snap = snapshot.val();
   for (const key in snap) {
@@ -19,6 +21,7 @@ onValue(refPost, (snapshot) => {
       introduce: snap[key].introduce,
       uid: snap[key].uid,
       displayName: snap[key].displayName,
+      image: snap[key].image,
     });
   }
 });
@@ -45,7 +48,7 @@ onValue(refPost, (snapshot) => {
           </div>
           </div>
           <div class="photo-area">
-            <img class="photo" src="src/img/ti.JPG">
+            {{ post.image }}
           </div>
           <div
             class="title-area"

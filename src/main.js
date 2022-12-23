@@ -6,6 +6,21 @@ import "https://kit.fontawesome.com/ac7659624e.js";
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "./firebaseConfig";
 
+// Vuetify
+import 'vuetify/styles'
+import { createVuetify } from 'vuetify'
+import * as components from 'vuetify/components'
+import * as directives from 'vuetify/directives'
+// import Vuetify from 'vuetify/lib'
+
+
+
+// export default new vuetify({
+//   icons: {
+//     iconfont: 'mdiSvg',
+//   },
+// })
+
 
 
 // Import the functions you need from the SDKs you need
@@ -17,4 +32,12 @@ import { firebaseConfig } from "./firebaseConfig";
 // Initialize Firebase
 initializeApp(firebaseConfig);
 
-createApp(App).use(VueRouter).mount('#app');
+const vuetify = createVuetify({
+  components,
+  directives,
+})
+
+createApp(App)
+  .use(VueRouter)
+  .use(vuetify)
+  .mount('#app');
