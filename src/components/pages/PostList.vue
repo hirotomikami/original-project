@@ -47,8 +47,8 @@ onValue(refPost, (snapshot) => {
             NickName
           </div>
           </div>
-          <div class="photo-area">
-            {{ post.imageUrl }}
+          <div style="padding">
+            <img class="photo-area" :src="post.imageUrl">
           </div>
           <div
             class="title-area"
@@ -140,14 +140,14 @@ main {
 }
 
 .photo-area {
-  width: 60%;
+  width: 100%;
+  border-radius: 30px;
   margin: 0px auto;
 }
 
 .photo {
   width: 100%;
   margin: 20px auto;
-  border-radius: 30px;
 }
 
 .title-area {

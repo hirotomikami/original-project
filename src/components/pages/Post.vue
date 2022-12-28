@@ -2,7 +2,7 @@
 import Footer from './footer/Footer.vue'
 import { ref } from "vue";
 import { getDatabase, ref as dbRef, push } from "firebase/database";
-
+import { getStorage, ref as stgRef, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 // const url = computed(() => {
 //   if (!image.value) {
@@ -10,6 +10,7 @@ import { getDatabase, ref as dbRef, push } from "firebase/database";
 //   }
 
 //   return URL.createObjectURL(image.value?.[0]);
+// });
 
 //   let imageURL = URL.createObjectURL(image.value?.[0]);
 //   const blob = new Blob([imageURL], {type: 'text/plain'});
@@ -24,21 +25,38 @@ import { getDatabase, ref as dbRef, push } from "firebase/database";
 
 // })
 
+const storage =getStorage();
 
 const image = ref(null);
 const inputTitle = ref('');
 const inputIntroduce = ref('');
 
-// imageをurlに変換
-const toBase64DataUri = file => new Promise(resolve => {
-  const reader = new FileReader();
-  reader.onload = () => resolve(reader.result);
-  reader.readAsDataURL(file);
-  });
 
-const pushPost = () => {
+// imageをurlに変換
+// const toBase64DataUri = file => new Promise(resolve => {
+//   const reader = new FileReader();
+//   reader.onload = () => resolve(reader.result);
+//   reader.readAsDataURL(file);
+//   });
+
+//   const imageUrl = computed( async() => {
+//     if (
+//       image.value?.[0]
+//     ){
+//     return await toBase64DataUri(image.value?.[0])
+//     }
+//   })
+
+
+const pushPost = async() => {
+  const file = image.value?.[0]
+  const storageRef = stgRef(storage, 'images/' + file.name);
+
+  await uploadBytesResumable(storageRef, file);
+  const dlUrl = await getDownloadURL(storageRef)
+
   let postData = {
-    imageUrl: await toBase64DataUri(image.value?.[0]),
+    imageUrl: dlUrl,
     displayName: "test",
     uid: "test",
     title: inputTitle.value,
@@ -58,7 +76,7 @@ const pushPost = () => {
     <div class="blur">
       <main>
         <div class="photo-area">
-            <v-img :src="toBase64DataUri" class="photo" />
+            <v-img :src="url" class="photo" />
         </div>
         <div class="input-photo">
           <v-file-input class="file-input" v-model="image"  />
