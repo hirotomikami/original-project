@@ -20,10 +20,11 @@ onValue(refPost, (snapshot) => {
       introduce: snap[key].introduce,
       uid: snap[key].uid,
       displayName: snap[key].displayName,
-      image: snap[key].image,
+      imageUrl: snap[key].imageUrl,
     });
   }
 });
+
 
 </script>
 
@@ -47,7 +48,7 @@ onValue(refPost, (snapshot) => {
           </div>
           </div>
           <div class="photo-area">
-            {{ post.image }}
+            {{ post.imageUrl }}
           </div>
           <div
             class="title-area"

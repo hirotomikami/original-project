@@ -32,6 +32,7 @@ import * as directives from 'vuetify/directives'
 // Initialize Firebase
 initializeApp(firebaseConfig);
 
+
 const vuetify = createVuetify({
   components,
   directives,

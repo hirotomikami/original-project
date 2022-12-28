@@ -1,35 +1,55 @@
 <script setup>
 import Footer from './footer/Footer.vue'
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import { getDatabase, ref as dbRef, push } from "firebase/database";
 
-const image = ref(null)
 
-// imageをurlに変換
-const url = computed(() => {
-  if (!image.value) {
-    return "";
-  }
-  return URL.createObjectURL(image.value?.[0]);
-})
+// const url = computed(() => {
+//   if (!image.value) {
+//     return "";
+//   }
 
+//   return URL.createObjectURL(image.value?.[0]);
+
+//   let imageURL = URL.createObjectURL(image.value?.[0]);
+//   const blob = new Blob([imageURL], {type: 'text/plain'});
+
+//   const reader = new FileReader();
+
+//   reader.onload = function(){
+//     console.log(reader.result);
+//   };
+
+//   reader.readAsText(blob);
+
+// })
+
+
+const image = ref(null);
 const inputTitle = ref('');
 const inputIntroduce = ref('');
 
+// imageをurlに変換
+const toBase64DataUri = file => new Promise(resolve => {
+  const reader = new FileReader();
+  reader.onload = () => resolve(reader.result);
+  reader.readAsDataURL(file);
+  });
+
 const pushPost = () => {
   let postData = {
+    imageUrl: await toBase64DataUri(image.value?.[0]),
     displayName: "test",
     uid: "test",
     title: inputTitle.value,
     introduce: inputIntroduce.value,
-    image: url.value,
   }
 
-// firebaseに保存
-const db = getDatabase();
-push(dbRef(db, 'post'), postData);
-
+  // firebaseに保存
+  const db = getDatabase();
+  push(dbRef(db, 'post'), postData);
 };
+
 
 </script>
 
@@ -38,7 +58,7 @@ push(dbRef(db, 'post'), postData);
     <div class="blur">
       <main>
         <div class="photo-area">
-            <v-img :src="url" class="photo" />
+            <v-img :src="toBase64DataUri" class="photo" />
         </div>
         <div class="input-photo">
           <v-file-input class="file-input" v-model="image"  />
