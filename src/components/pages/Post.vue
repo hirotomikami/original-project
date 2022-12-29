@@ -3,7 +3,6 @@ import Footer from './footer/Footer.vue'
 import { ref, computed } from "vue";
 import { getDatabase, ref as dbRef, push } from "firebase/database";
 import { getStorage, ref as stgRef, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { routerKey } from 'vue-router';
 
 
 // post.vueで画像選択後、画像プレビューを表示
@@ -186,18 +185,26 @@ main {
 }
 
 .form-button {
-  width: 180px;
+  width: 130px;
   margin: 70px auto;
 }
 
 .button-post {
   width: 100%;
-  height: 5em;
+  height: 80px;
+  display: inline-block;
+  padding: 20px 40px;
+  text-decoration: none;
   background-color: snow;
-  border-radius: 15px;
-  font-size: 15px;
-  margin: 0 auto;
+  color: grey;
   font-weight: bold;
-  box-shadow: 3px 2px 2px 2px grey;
+  border-bottom: solid 4px grey;
+  border-radius: 10px;
+  margin: 0px auto;
+}
+.button-post:active {
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  border-bottom: none;
 }
 </style>
