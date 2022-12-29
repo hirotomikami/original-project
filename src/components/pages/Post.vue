@@ -1,8 +1,18 @@
 <script setup>
 import Footer from './footer/Footer.vue'
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { getDatabase, ref as dbRef, push } from "firebase/database";
 import { getStorage, ref as stgRef, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+
+
+// post.vueで画像選択後、画像プレビューを表示
+const url = computed(() => {
+  if (!image.value) {
+    return "";
+  }
+
+  return URL.createObjectURL(image.value?.[0]);
+});
 
 
 const inputTitle = ref('');
@@ -11,7 +21,7 @@ const storage =getStorage();
 const image = ref(null);
 
 
-//Storageを使用した画像アップロード処理
+//Storageを使用した画像アップロード機能、データ定義、firebaseに保存
 const pushPost = async() => {
   const file = image.value?.[0]
   const storageRef = stgRef(storage, 'images/' + file.name);
