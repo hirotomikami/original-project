@@ -236,4 +236,8 @@ header .text h1 {
   color: grey;
 }
 
+footer {
+  position: fixed;
+  bottom: 0px;
+}
 </style>

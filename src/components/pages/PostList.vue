@@ -174,4 +174,9 @@ main {
   text-align: center;
   color: grey;
 }
+
+footer {
+  position: fixed;
+  bottom: 0px;
+}
 </style>

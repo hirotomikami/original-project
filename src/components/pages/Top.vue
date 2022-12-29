@@ -157,6 +157,4 @@ main {
   display: block;
   margin-top: 0.5em;
 }
-
-
 </style>

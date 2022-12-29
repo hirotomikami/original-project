@@ -14,8 +14,6 @@ footer {
   width: 100%;
   background-color: grey;
   text-align: center;
-  position: fixed;
-  bottom: 0px;
 }
 
 .fa-solid {

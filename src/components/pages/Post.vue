@@ -4,50 +4,14 @@ import { ref } from "vue";
 import { getDatabase, ref as dbRef, push } from "firebase/database";
 import { getStorage, ref as stgRef, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
-// const url = computed(() => {
-//   if (!image.value) {
-//     return "";
-//   }
 
-//   return URL.createObjectURL(image.value?.[0]);
-// });
-
-//   let imageURL = URL.createObjectURL(image.value?.[0]);
-//   const blob = new Blob([imageURL], {type: 'text/plain'});
-
-//   const reader = new FileReader();
-
-//   reader.onload = function(){
-//     console.log(reader.result);
-//   };
-
-//   reader.readAsText(blob);
-
-// })
-
-const storage =getStorage();
-
-const image = ref(null);
 const inputTitle = ref('');
 const inputIntroduce = ref('');
+const storage =getStorage();
+const image = ref(null);
 
 
-// imageをurlに変換
-// const toBase64DataUri = file => new Promise(resolve => {
-//   const reader = new FileReader();
-//   reader.onload = () => resolve(reader.result);
-//   reader.readAsDataURL(file);
-//   });
-
-//   const imageUrl = computed( async() => {
-//     if (
-//       image.value?.[0]
-//     ){
-//     return await toBase64DataUri(image.value?.[0])
-//     }
-//   })
-
-
+//Storageを使用した画像アップロード処理
 const pushPost = async() => {
   const file = image.value?.[0]
   const storageRef = stgRef(storage, 'images/' + file.name);
