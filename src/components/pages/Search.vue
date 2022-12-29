@@ -17,8 +17,9 @@ onValue(refPost, (snapshot) => {
       introduce: snap[key].introduce,
       uid: snap[key].uid,
       displayName: snap[key].displayName,
+      imageUrl: snap[key].imageUrl,
     });
-    }
+  }
 });
 
 // 検索処理
@@ -42,6 +43,7 @@ const search = () => {
 
 
 </script>
+
 
 <template>
   <div class="blur">
@@ -69,23 +71,19 @@ const search = () => {
     <section v-for="post in filteredPosts" :key="post">
       <div class="post-area">
         <div class="name-area">
-        <div class="name">
-          NickName
-        </div>
+          <div class="name">
+            NickName
+          </div>
         </div>
         <div class="photo-area">
-          <img class="photo" src="src/img/ti.JPG">
+          <img class="photo" :src="post.imageUrl">
         </div>
-        <div
-          class="title-area"
-        >
+        <div class="title-area">
           <p class="title">
             {{ post.title }}
           </p>
         </div>
-        <div
-          class="int-area"
-        >
+        <div class="int-area">
           <p class="int">
             {{ post.introduce }}
           </p>
@@ -95,6 +93,7 @@ const search = () => {
   </main>
   <Footer />
 </template>
+
 
 <style scoped>
  .blur {

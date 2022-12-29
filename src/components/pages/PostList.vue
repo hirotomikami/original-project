@@ -3,8 +3,6 @@ import Footer from './footer/Footer.vue';
 import { ref } from "vue";
 import { getDatabase, ref as dbRef, onValue } from "firebase/database";
 
-// import { getAuth, onAuthStateChanged } from "firebase/auth";
-
 
 // 投稿データを取得,表示
 const posts = ref([]);
@@ -28,6 +26,7 @@ onValue(refPost, (snapshot) => {
 
 </script>
 
+
 <template>
   <body>
     <div class="blur">
@@ -50,16 +49,12 @@ onValue(refPost, (snapshot) => {
           <div class="photo-area">
             <img class="photo" :src="post.imageUrl">
           </div>
-          <div
-            class="title-area"
-          >
+          <div class="title-area">
             <p class="title">
               {{ post.title }}
             </p>
           </div>
-          <div
-            class="int-area"
-          >
+          <div class="int-area">
             <p class="int">
               {{ post.introduce }}
             </p>
@@ -70,6 +65,7 @@ onValue(refPost, (snapshot) => {
     <Footer />
   </body>
 </template>
+
 
 <style scoped>
 
