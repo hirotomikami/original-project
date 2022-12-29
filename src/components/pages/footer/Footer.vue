@@ -2,11 +2,11 @@
 </script>
 
 <template>
-    <footer>
-      <router-link to="/post"><i class="fa-solid fa-plus"></i></router-link>
-      <router-link to="/postList"><i class="fa-solid fa-list-ul"></i></router-link>
-      <router-link to="/search"><i class="fa-solid fa-magnifying-glass"></i></router-link>
-    </footer>
+  <footer>
+    <router-link to="/post"><i class="fa-solid fa-plus"></i></router-link>
+    <router-link to="/postList"><i class="fa-solid fa-list-ul"></i></router-link>
+    <router-link to="/search"><i class="fa-solid fa-magnifying-glass"></i></router-link>
+  </footer>
 </template>
 
 <style>

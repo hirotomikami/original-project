@@ -12,6 +12,7 @@ const data = reactive({
 
 const router = useRouter()
 const auth = getAuth();
+
 const login = () => {
   signInWithEmailAndPassword(auth, data.email, data.password)
     .then((userCredential) => {

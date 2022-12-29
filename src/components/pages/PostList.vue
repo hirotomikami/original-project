@@ -9,7 +9,6 @@ const posts = ref([]);
 const db = getDatabase();
 const refPost = dbRef(db,"post");
 
-
 onValue(refPost, (snapshot) => {
   const snap = snapshot.val();
   for (const key in snap) {
@@ -22,11 +21,7 @@ onValue(refPost, (snapshot) => {
     });
   }
 });
-
-
 </script>
-
-
 <template>
   <body>
     <div class="blur">
@@ -68,7 +63,6 @@ onValue(refPost, (snapshot) => {
 
 
 <style scoped>
-
 .blur {
   background: url(src/img/haikei.jpg) no-repeat center;
   background-size: cover;

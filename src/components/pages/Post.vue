@@ -43,10 +43,7 @@ const pushPost = async() => {
 
   location.href = "postList"
 };
-
-
 </script>
-
 <template>
   <body>
     <div class="blur">
@@ -61,7 +58,6 @@ const pushPost = async() => {
           <form class="form-title">
             <input
               class="title"
-              action="サイトURL"
               type="text"
               name="post"
               placeholder="タイトル"
@@ -73,7 +69,6 @@ const pushPost = async() => {
           <form class="form-int">
             <input
               class="int"
-              action="サイトURL"
               type="text"
               name="int"
               placeholder="紹介文"

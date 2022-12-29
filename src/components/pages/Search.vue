@@ -40,8 +40,6 @@ const search = () => {
   filterWord.value = searchWord.value
   console.log(filteredPosts.value)
 }
-
-
 </script>
 
 
