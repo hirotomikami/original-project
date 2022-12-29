@@ -3,6 +3,7 @@ import Footer from './footer/Footer.vue'
 import { ref, computed } from "vue";
 import { getDatabase, ref as dbRef, push } from "firebase/database";
 import { getStorage, ref as stgRef, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { routerKey } from 'vue-router';
 
 
 // post.vueで画像選択後、画像プレビューを表示
@@ -40,6 +41,8 @@ const pushPost = async() => {
   // firebaseに保存
   const db = getDatabase();
   push(dbRef(db, 'post'), postData);
+
+  location.href = "postList"
 };
 
 

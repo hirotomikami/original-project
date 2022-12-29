@@ -95,11 +95,12 @@ onValue(refPost, (snapshot) => {
 
 header {
   width: 100%;
+  height: 150px;
 }
 
 header .text h1 {
   text-align: center;
-  line-height: 100px;
+  line-height: 150px;
   font-size: 50px;
   color: snow;
   z-index: 3;
