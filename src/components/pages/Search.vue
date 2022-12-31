@@ -196,14 +196,14 @@ header .text h1 {
 }
 
 .photo-area {
-  width: 60%;
-  margin: 0px auto;
+  width: 80%;
+  margin: 20px auto;
 }
 
 .photo {
   width: 100%;
-  margin: 20px auto;
   border-radius: 30px;
+  margin: 0px auto;
 }
 
 .title-area {

@@ -141,7 +141,6 @@ main {
   margin: 0px auto;
 }
 
-
 .title-area {
   width: 60%;
   margin: 0 auto;
