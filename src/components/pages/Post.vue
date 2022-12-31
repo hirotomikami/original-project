@@ -60,7 +60,7 @@ const pushPost = async() => {
               class="title"
               type="text"
               name="post"
-              placeholder="タイトル"
+              placeholder="Title"
               v-model="inputTitle"
             />
           </form>
@@ -71,7 +71,7 @@ const pushPost = async() => {
               class="int"
               type="text"
               name="int"
-              placeholder="紹介文"
+              placeholder="Introduce"
               v-model="inputIntroduce"
             />
           </form>
@@ -82,7 +82,7 @@ const pushPost = async() => {
             type="button"
             value="text"
             @click="pushPost()"
-          >POST</button>
+          >Click & Post!</button>
         </form>
       </main>
     </div>
@@ -131,18 +131,14 @@ main {
 }
 
 .input-photo {
-  width: 100%;
-  margin: 5px auto;
+  width: 60%;
+  margin: 10px auto;
 }
 
 .file-input {
-  color: snow;
+  color: black;
   width: 80%;
-  margin: 10px ;
-}
-
-.file-input::placeholder {
-  color: red;
+  margin: 0px auto;
 }
 
 .form-title {
@@ -155,7 +151,7 @@ main {
   margin: 0 auto;
   height: 60px;
   border-radius: 10px;
-  border: solid 3px grey;
+  border: solid 2px grey;
   text-align: center;
   font-size: 20px;
   font-weight: bold;
@@ -186,11 +182,11 @@ main {
 
 .button-post {
   width: 100%;
-  height: 80px;
+  /* height: 80px; */
   display: inline-block;
   padding: 20px 40px;
   text-decoration: none;
-  background-color: snow;
+  background-color: rgba(255,255,255,0.8);
   color: grey;
   font-weight: bold;
   border-bottom: solid 4px grey;

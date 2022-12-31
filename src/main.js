@@ -5,6 +5,7 @@ import VueRouter from "./router/index";
 import "https://kit.fontawesome.com/ac7659624e.js";
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "./firebaseConfig";
+import '@mdi/font/css/materialdesignicons.css'
 
 // Vuetify
 import 'vuetify/styles'
