@@ -108,7 +108,7 @@ main {
 }
 
 .post-area {
-  width: 300px;
+  width: 70%;
   margin: 50px auto;
   padding: 20px 0px;
   border: solid 1px grey;

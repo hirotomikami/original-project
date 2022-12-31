@@ -173,7 +173,7 @@ header .text h1 {
 
 
 .post-area {
-  width: 300px;
+  width: 400px;
   margin: 50px auto;
   padding: 20px 0px;
   border: solid 1px grey;
