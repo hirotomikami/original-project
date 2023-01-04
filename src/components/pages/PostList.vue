@@ -36,11 +36,11 @@ onValue(refPost, (snapshot) => {
     <main>
       <section v-for="post in posts" :key="post">
         <div class="post-area">
-          <div class="name-area">
+          <!-- <div class="name-area">
           <div class="name">
             NickName
           </div>
-          </div>
+          </div> -->
           <div class="photo-area">
             <img class="photo" :src="post.imageUrl">
           </div>
@@ -116,7 +116,7 @@ main {
   border-radius: 20px;
 }
 
-.name-area {
+/* .name-area {
   width: fit-content;
   background-color: grey;
   margin-left: 10px;
@@ -128,7 +128,7 @@ main {
   color: snow;
   font-size: 10px;
   padding: 5px;
-}
+} */
 
 .photo-area {
   width: 80%;

@@ -68,11 +68,11 @@ const search = () => {
   <main class="main-2">
     <section v-for="post in filteredPosts" :key="post">
       <div class="post-area">
-        <div class="name-area">
+        <!-- <div class="name-area">
           <div class="name">
             NickName
           </div>
-        </div>
+        </div> -->
         <div class="photo-area">
           <img class="photo" :src="post.imageUrl">
         </div>
@@ -181,7 +181,7 @@ header .text h1 {
   border-radius: 20px;
 }
 
-.name-area {
+/* .name-area {
   width: fit-content;
   background-color: grey;
   margin-left: 10px;
@@ -193,7 +193,7 @@ header .text h1 {
   color: snow;
   font-size: 10px;
   padding: 5px;
-}
+} */
 
 .photo-area {
   width: 80%;
