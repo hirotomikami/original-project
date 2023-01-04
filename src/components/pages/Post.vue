@@ -31,8 +31,6 @@ const pushPost = async() => {
 
   let postData = {
     imageUrl: dlUrl,
-    displayName: "test",
-    uid: "test",
     title: inputTitle.value,
     introduce: inputIntroduce.value,
   }
@@ -58,6 +56,7 @@ const pushPost = async() => {
           <form class="form-title">
             <input
               class="title"
+              maxlength="10"
               type="text"
               name="post"
               placeholder="Title"
@@ -67,7 +66,7 @@ const pushPost = async() => {
         </div>
         <div class="form-area-int">
           <form class="form-int">
-            <input
+            <textarea
               class="int"
               type="text"
               name="int"
@@ -169,10 +168,15 @@ main {
   border-radius: 20px;
   border: solid 3px grey;
   margin: 0 auto;
-  text-align: center;
-  font-size: 30px;
-  font-weight: bold;
+  padding: 10px 10px;
+  font-size: 25px;
   background-color: rgba(255,255,255,0.1);
+}
+
+.int::placeholder {
+  text-align: center;
+  line-height: 180px;
+  font-weight: bold;
 }
 
 .form-button {
@@ -182,7 +186,6 @@ main {
 
 .button-post {
   width: 100%;
-  /* height: 80px; */
   display: inline-block;
   padding: 20px 40px;
   text-decoration: none;

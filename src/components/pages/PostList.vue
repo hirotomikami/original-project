@@ -15,8 +15,6 @@ onValue(refPost, (snapshot) => {
     posts.value.push({
       title: snap[key].title,
       introduce: snap[key].introduce,
-      uid: snap[key].uid,
-      displayName: snap[key].displayName,
       imageUrl: snap[key].imageUrl,
     });
   }
