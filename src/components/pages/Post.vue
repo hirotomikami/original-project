@@ -56,7 +56,6 @@ const pushPost = async() => {
           <form class="form-title">
             <input
               class="title"
-              maxlength="10"
               type="text"
               name="post"
               placeholder="Title"
