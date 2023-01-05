@@ -66,7 +66,7 @@ import Footer from "../footer/Footer.vue"
 
 <style scoped>
 .blur {
-  background: url(src/img/haikei.jpg) no-repeat center;
+  background: url(./src/assets/img/haikei.jpg) no-repeat center;
   background-size: cover;
   position: relative;
   z-index: 0;
@@ -114,7 +114,7 @@ text {
 }
 
 .blur2 {
-  background: url(src/img/haikei2.jpg) no-repeat center;
+  background: url(./src/assets/img/haikei2.jpg) no-repeat center;
   background-size: cover;
   position: relative;
   z-index: 0;
