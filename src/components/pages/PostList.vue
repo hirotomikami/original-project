@@ -1,7 +1,8 @@
 <script setup>
-import Footer from './footer/Footer.vue';
+import Footer from "../footer/Footer.vue";
 import { ref } from "vue";
 import { getDatabase, ref as dbRef, onValue } from "firebase/database";
+import PostView from "../list/PostView.vue";
 
 
 // 投稿データを取得,表示
@@ -17,7 +18,7 @@ onValue(refPost, (snapshot) => {
       introduce: snap[key].introduce,
       imageUrl: snap[key].imageUrl,
     });
-  }
+  };
 });
 </script>
 <template>
@@ -32,28 +33,9 @@ onValue(refPost, (snapshot) => {
       </div>
     </div>
     <main>
-      <section v-for="post in posts" :key="post">
-        <div class="post-area">
-          <!-- <div class="name-area">
-          <div class="name">
-            NickName
-          </div>
-          </div> -->
-          <div class="photo-area">
-            <img class="photo" :src="post.imageUrl">
-          </div>
-          <div class="title-area">
-            <p class="title">
-              {{ post.title }}
-            </p>
-          </div>
-          <div class="int-area">
-            <p class="int">
-              {{ post.introduce }}
-            </p>
-          </div>
-        </div>
-      </section>
+      <PostView
+      :list="filteredPosts"
+      />
     </main>
     <Footer />
   </body>
@@ -96,75 +78,6 @@ header .text h1 {
   font-size: 50px;
   color: snow;
   z-index: 3;
-}
-
-main {
-  width: 100%;
-  margin: 0px;
-  background-color: snow;
-  overflow: hidden;
-}
-
-.post-area {
-  width: 70%;
-  margin: 50px auto;
-  padding: 20px 0px;
-  border: solid 1px grey;
-  box-shadow: 2px 2px 2px 3px grey;
-  border-radius: 20px;
-}
-
-/* .name-area {
-  width: fit-content;
-  background-color: grey;
-  margin-left: 10px;
-  border-radius: 10px;
-}
-
-.name {
-  text-align: center;
-  color: snow;
-  font-size: 10px;
-  padding: 5px;
-} */
-
-.photo-area {
-  width: 80%;
-  margin: 20px auto;
-}
-
-.photo {
-  width: 100%;
-  border-radius: 30px;
-  margin: 0px auto;
-}
-
-.title-area {
-  width: 60%;
-  margin: 0 auto;
-}
-
-.title {
-  width: 100%;
-  height: 30px;
-  margin: 20px auto 0px;
-  text-align: center;
-  font-size: 20px;
-  line-height: 30px;
-}
-
-.int-area {
-  width: 60%;
-  margin: 0 auto;
-  padding: 10px 0px;
-}
-
-.int {
-  width: 100%;
-  margin: 0 auto;
-  font-size: 15px;
-  text-align: center;
-  color: grey;
 }
 
 footer {

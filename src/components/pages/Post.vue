@@ -1,5 +1,5 @@
 <script setup>
-import Footer from './footer/Footer.vue'
+import Footer from '../footer/Footer.vue'
 import { ref, computed } from "vue";
 import { getDatabase, ref as dbRef, push } from "firebase/database";
 import { getStorage, ref as stgRef, uploadBytesResumable, getDownloadURL } from "firebase/storage";

@@ -1,8 +1,9 @@
 <script setup>
-import Footer from "./footer/Footer.vue";
+import Footer from "../footer/Footer.vue";
 import { ref, computed } from "vue";
 import { getDatabase, ref as dbRef, onValue } from "firebase/database"
-// import PostView from "./list/PostView.vue";
+import PostView from "../list/PostView.vue";
+import PostList from "./PostList.vue";
 
 
 // 投稿データを取得,表示
@@ -30,18 +31,15 @@ const filterWord = ref("");
 const filteredPosts = computed(() => {
   return posts.value.filter(post => {
     return post.title.includes(filterWord.value)
-      || post.introduce.includes(filterWord.value)
-  })
-})
+      || post.introduce.includes(filterWord.value);
+  });
+});
 
 // インプットした検索ワードを別の変数に格納
 const search = () => {
   filterWord.value = searchWord.value
   console.log(filteredPosts.value)
-}
-
-{/* <PostView :list="filteredPosts" /> */}
-
+};
 </script>
 
 
@@ -67,29 +65,10 @@ const search = () => {
       </header>
     </div>
   </div>
-  <main class="main-2">
-    <section v-for="post in filteredPosts" :key="post">
-      <div class="post-area">
-        <!-- <div class="name-area">
-          <div class="name">
-            NickName
-          </div>
-        </div> -->
-        <div class="photo-area">
-          <img class="photo" :src="post.imageUrl">
-        </div>
-        <div class="title-area">
-          <p class="title">
-            {{ post.title }}
-          </p>
-        </div>
-        <div class="int-area">
-          <p class="int">
-            {{ post.introduce }}
-          </p>
-        </div>
-      </div>
-    </section>
+  <main>
+   <PostView
+   :list="filteredPosts"
+   />
   </main>
   <Footer />
 </template>
@@ -132,11 +111,6 @@ header .text h1 {
   z-index: 3;
 }
 
-.main-1 {
-  width: 100%;
-  height: 800px;
-}
-
 .form-search {
   width: 200px;
   margin: 50px auto;
@@ -164,76 +138,6 @@ header .text h1 {
   right: 2%;
   color: snow;
   font-size: 30px;
-}
-
-.main-2 {
-  width: 100%;
-  margin: 0px;
-  background-color: snow;
-  overflow: hidden;
-}
-
-
-.post-area {
-  width: 70%;
-  margin: 50px auto;
-  padding: 20px 0px;
-  border: solid 1px grey;
-  box-shadow: 2px 2px 2px 3px grey;
-  border-radius: 20px;
-}
-
-/* .name-area {
-  width: fit-content;
-  background-color: grey;
-  margin-left: 10px;
-  border-radius: 10px;
-}
-
-.name {
-  text-align: center;
-  color: snow;
-  font-size: 10px;
-  padding: 5px;
-} */
-
-.photo-area {
-  width: 80%;
-  margin: 20px auto;
-}
-
-.photo {
-  width: 100%;
-  border-radius: 30px;
-  margin: 0px auto;
-}
-
-.title-area {
-  width: 60%;
-  margin: 0 auto;
-}
-
-.title {
-  width: 100%;
-  height: 30px;
-  margin: 20px auto 0px;
-  text-align: center;
-  font-size: 20px;
-  line-height: 30px;
-}
-
-.int-area {
-  width: 60%;
-  margin: 0 auto;
-  padding: 10px 0px;
-}
-
-.int {
-  width: 100%;
-  margin: 0 auto;
-  font-size: 15px;
-  text-align: center;
-  color: grey;
 }
 
 footer {
