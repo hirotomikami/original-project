@@ -2,6 +2,7 @@
 import Footer from "./footer/Footer.vue";
 import { ref, computed } from "vue";
 import { getDatabase, ref as dbRef, onValue } from "firebase/database"
+// import PostView from "./list/PostView.vue";
 
 
 // 投稿データを取得,表示
@@ -38,6 +39,9 @@ const search = () => {
   filterWord.value = searchWord.value
   console.log(filteredPosts.value)
 }
+
+{/* <PostView :list="filteredPosts" /> */}
+
 </script>
 
 
@@ -235,5 +239,11 @@ header .text h1 {
 footer {
   position: fixed;
   bottom: 0px;
+}
+
+@media screen and (min-width:768px) {
+  footer {
+    width: 60%;
+  }
 }
 </style>

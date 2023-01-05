@@ -171,4 +171,10 @@ footer {
   position: fixed;
   bottom: 0px;
 }
+
+@media screen and (min-width:768px) {
+  footer {
+    width: 60%;
+  }
+}
 </style>
