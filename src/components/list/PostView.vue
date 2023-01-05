@@ -1,7 +1,9 @@
 <script setup>
+
 const props = defineProps({
-  list: String,
+  list: Array,
 });
+
 </script>
 
 <template>

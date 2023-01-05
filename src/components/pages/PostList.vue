@@ -33,9 +33,7 @@ onValue(refPost, (snapshot) => {
       </div>
     </div>
     <main>
-      <PostView
-      :list="filteredPosts"
-      />
+      <PostView :list="posts"/>
     </main>
     <Footer />
   </body>

@@ -3,8 +3,6 @@ import Footer from "../footer/Footer.vue";
 import { ref, computed } from "vue";
 import { getDatabase, ref as dbRef, onValue } from "firebase/database"
 import PostView from "../list/PostView.vue";
-import PostList from "./PostList.vue";
-
 
 // 投稿データを取得,表示
 const posts = ref([]);
@@ -38,10 +36,9 @@ const filteredPosts = computed(() => {
 // インプットした検索ワードを別の変数に格納
 const search = () => {
   filterWord.value = searchWord.value
-  console.log(filteredPosts.value)
+  // console.log(filteredPosts.value)
 };
 </script>
-
 
 <template>
   <div class="blur">
@@ -66,9 +63,7 @@ const search = () => {
     </div>
   </div>
   <main>
-   <PostView
-   :list="filteredPosts"
-   />
+   <PostView :list="filteredPosts"/>
   </main>
   <Footer />
 </template>
