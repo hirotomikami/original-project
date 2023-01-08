@@ -90,7 +90,7 @@ const pushPost = async() => {
 
 <style scoped>
  .blur {
- background: url(./src/assets/img/haikei.jpg) no-repeat center;
+ background: url(../../assets/img/haikei.jpg) no-repeat center;
   background-size: cover;
   position: relative;
   z-index: 0;

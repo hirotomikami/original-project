@@ -1,5 +1,9 @@
 src/firebaseConfig.js
+
+# local env files
 .env
+.env.local
+.env.*.local
 
 # Logs
 logs
