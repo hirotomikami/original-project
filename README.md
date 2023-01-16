@@ -1,9 +1,20 @@
-# Vue 3 + Vite
+# FAV S/S
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## 概要
+- 投稿、検索機能
+- 完全匿名性
 
-## Recommended IDE Setup
+## 使い方
+画面下部ナビゲーションのアイコンをクリックし、投稿作成ページ、投稿一覧ページ、投稿検索ページへ移動。
+投稿作成ページではファイルアイコン部をクリックして画像ファイルを選択、それぞれの項目を入力後「click & post」ボタンをクリックし、投稿完了。
+検索ページでは画面上部の検索窓に検索ワードを入力し、虫眼鏡アイコンをクリックするとキーワードに合致する投稿が表示される。
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
-画面下部ナビゲーションのアイコンをクリックし、投稿作成ページ、投稿一覧ページ、投稿検索ページへ移動。投稿作成ページではファイルアイコン部をクリックして画像ファイルを選択、それぞれの項目を入力後「click & post」ボタンをクリックすると投稿完了。検索ページでは画面上部の検索窓に検索ワードを入力し、虫眼鏡アイコンをクリックするとキーワードに合致する投稿が表示される。
-画面下部ナビゲーションのアイコンをクリックし、投稿作成ページ、投稿一覧ページ、投稿検索ページへ移動。投稿作成ページではファイルアイコン部をクリックして画像ファイルを選択、それぞれの項目を入力後「click & post」ボタンをクリックすると投稿完了。検索ページでは画面上部の検索窓に検索ワードを入力し、虫眼鏡アイコンをクリックするとキーワードに合致する投稿が表示される。
+## 環境
+Vue.js
+node.js
+firebase
+
+## その他
+deploy後URL: https://original-project-4dce7.web.app
+firebase Configの記載有必要
+
